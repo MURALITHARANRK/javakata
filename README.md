@@ -1,0 +1,2 @@
+# javakata
+Java Kata
