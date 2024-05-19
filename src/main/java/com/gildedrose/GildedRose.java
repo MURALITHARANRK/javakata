@@ -2,6 +2,7 @@ package com.gildedrose;
 
 import com.gildedrose.service.impl.AgedBrie;
 import com.gildedrose.service.impl.BackstagePasses;
+import com.gildedrose.service.impl.Sulfuras;
 
 class GildedRose {
     public static final String AGED_BRIE = "Aged Brie";
@@ -18,7 +19,8 @@ class GildedRose {
         for (Item item : items) {
             switch (item.name) {
                 case SULFURAS:
-                    return;
+                    sulfuras(item);
+                    break;
                 case AGED_BRIE:
                     agedBrie(item);
                     break;
@@ -75,6 +77,12 @@ class GildedRose {
         decreaseQuality(item);
         decreaseQuality(item);
         updateSellIn(item);
+    }
+
+    private void sulfuras(Item item) {
+        Sulfuras sulfuras = new Sulfuras();
+        sulfuras.updateProductQuality(item);
+        sulfuras.updateProductSellIn(item);
     }
 
 }
