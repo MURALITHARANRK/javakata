@@ -1,5 +1,7 @@
 package com.gildedrose;
 
+import com.gildedrose.service.impl.AgedBrie;
+
 class GildedRose {
     public static final String AGED_BRIE = "Aged Brie";
     public static final String BACKSTAGE_PASSES = "Backstage passes to a TAFKAL80ETC concert";
@@ -57,11 +59,9 @@ class GildedRose {
     }
 
     private void agedBrie(Item item) {
-        increaseQuality(item);
-        updateSellIn(item);
-        if (item.sellIn < 0) {
-            increaseQuality(item);
-        }
+        AgedBrie agedBrie = new AgedBrie();
+        agedBrie.updateProductQuality(item);
+        agedBrie.updateProductSellIn(item);
     }
 
     private void backstagePasses(Item item) {
