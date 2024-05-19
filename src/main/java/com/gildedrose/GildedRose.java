@@ -2,6 +2,7 @@ package com.gildedrose;
 
 import com.gildedrose.service.impl.AgedBrie;
 import com.gildedrose.service.impl.BackstagePasses;
+import com.gildedrose.service.impl.Conjured;
 import com.gildedrose.service.impl.Sulfuras;
 
 class GildedRose {
@@ -74,14 +75,9 @@ class GildedRose {
     }
 
     private void conjured(Item item) {
-        decreaseQuality(item);
-        decreaseQuality(item);
-        updateSellIn(item);
-        if (item.sellIn < 0) {
-            decreaseQuality(item);
-            decreaseQuality(item);
-        }
-
+        Conjured conjured = new Conjured();
+        conjured.updateProductQuality(item);
+        conjured.updateProductSellIn(item);
     }
 
     private void sulfuras(Item item) {
