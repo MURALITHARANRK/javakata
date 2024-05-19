@@ -13,44 +13,21 @@ class GildedRose {
 
     public void updateQuality() {
         for (Item item : items) {
-            if (item.name.equals(SULFURAS)) {
-                return;
-            } else {
-                if (!item.name.equals(AGED_BRIE)
-                    && !item.name.equals(BACKSTAGE_PASSES)) {
-                    decreaseQuality(item);
-                    if (item.name.equals(CONJURED)) {
-                        decreaseQuality(item);
-                    }
-                } else {
-                    increaseQuality(item);
-                    if (item.name.equals(BACKSTAGE_PASSES)) {
-                        if (item.sellIn < 11) {
-                            increaseQuality(item);
-                        }
-
-                        if (item.sellIn < 6) {
-                            increaseQuality(item);
-                        }
-                    }
-                }
-
-                updateSellIn(item);
-
-                if (item.sellIn < 0) {
-                    if (!item.name.equals(AGED_BRIE)) {
-                        if (!item.name.equals(BACKSTAGE_PASSES)) {
-                            decreaseQuality(item);
-                            if(item.name.equals(CONJURED)){
-                                decreaseQuality(item);
-                            }
-                        } else {
-                            item.quality = 0;
-                        }
-                    } else {
-                        increaseQuality(item);
-                    }
-                }
+            switch (item.name) {
+                case SULFURAS:
+                    return;
+                case AGED_BRIE:
+                    agedBrie(item);
+                    break;
+                case BACKSTAGE_PASSES:
+                    backstagePasses(item);
+                    break;
+                case CONJURED:
+                    conjured(item);
+                    break;
+                default:
+                    commonItems(item);
+                    break;
             }
         }
     }
@@ -70,4 +47,47 @@ class GildedRose {
             item.quality = item.quality + 1;
         }
     }
+
+    private void commonItems(Item item) {
+        decreaseQuality(item);
+        updateSellIn(item);
+        if (item.sellIn < 0) {
+            decreaseQuality(item);
+        }
+    }
+
+    private void agedBrie(Item item) {
+        increaseQuality(item);
+        updateSellIn(item);
+        if (item.sellIn < 0) {
+            increaseQuality(item);
+        }
+    }
+
+    private void backstagePasses(Item item) {
+        increaseQuality(item);
+        if (item.sellIn < 11) {
+            increaseQuality(item);
+        }
+
+        if (item.sellIn < 6) {
+            increaseQuality(item);
+        }
+        updateSellIn(item);
+        if (item.sellIn < 0) {
+            item.quality = 0;
+        }
+    }
+
+    private void conjured(Item item) {
+        decreaseQuality(item);
+        decreaseQuality(item);
+        updateSellIn(item);
+        if (item.sellIn < 0) {
+            decreaseQuality(item);
+            decreaseQuality(item);
+        }
+
+    }
+
 }
