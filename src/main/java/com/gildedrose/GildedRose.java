@@ -1,6 +1,7 @@
 package com.gildedrose;
 
 import com.gildedrose.service.impl.AgedBrie;
+import com.gildedrose.service.impl.BackstagePasses;
 
 class GildedRose {
     public static final String AGED_BRIE = "Aged Brie";
@@ -65,18 +66,9 @@ class GildedRose {
     }
 
     private void backstagePasses(Item item) {
-        increaseQuality(item);
-        if (item.sellIn < 11) {
-            increaseQuality(item);
-        }
-
-        if (item.sellIn < 6) {
-            increaseQuality(item);
-        }
-        updateSellIn(item);
-        if (item.sellIn < 0) {
-            item.quality = 0;
-        }
+        BackstagePasses backstagePasses = new BackstagePasses();
+        backstagePasses.updateProductQuality(item);
+        backstagePasses.updateProductSellIn(item);
     }
 
     private void conjured(Item item) {
