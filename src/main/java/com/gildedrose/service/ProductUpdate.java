@@ -25,7 +25,7 @@ public class ProductUpdate {
      * Validating the product whether it is valid to sell or not.
      */
     public boolean isValidSellIn(Item item) {
-        return item.sellIn < 0;
+        return item.sellIn <= 0;
     }
 
     /**

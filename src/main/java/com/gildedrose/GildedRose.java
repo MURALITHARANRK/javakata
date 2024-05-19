@@ -1,9 +1,6 @@
 package com.gildedrose;
 
-import com.gildedrose.service.impl.AgedBrie;
-import com.gildedrose.service.impl.BackstagePasses;
-import com.gildedrose.service.impl.Conjured;
-import com.gildedrose.service.impl.Sulfuras;
+import com.gildedrose.service.impl.*;
 
 class GildedRose {
     public static final String AGED_BRIE = "Aged Brie";
@@ -32,7 +29,7 @@ class GildedRose {
                     conjured(item);
                     break;
                 default:
-                    commonItems(item);
+                    standardItems(item);
                     break;
             }
         }
@@ -54,12 +51,10 @@ class GildedRose {
         }
     }
 
-    private void commonItems(Item item) {
-        decreaseQuality(item);
-        updateSellIn(item);
-        if (item.sellIn < 0) {
-            decreaseQuality(item);
-        }
+    private void standardItems(Item item) {
+        StandardItems standardItems = new StandardItems();
+        standardItems.updateProductQuality(item);
+        standardItems.updateProductSellIn(item);
     }
 
     private void agedBrie(Item item) {
