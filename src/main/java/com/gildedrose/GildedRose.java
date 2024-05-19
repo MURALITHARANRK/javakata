@@ -35,22 +35,6 @@ class GildedRose {
         }
     }
 
-    private void decreaseQuality(Item item) {
-        if (item.quality > 0) {
-            item.quality = item.quality - 1;
-        }
-    }
-
-    private void updateSellIn(Item item) {
-        item.sellIn = item.sellIn - 1;
-    }
-
-    private void increaseQuality(Item item) {
-        if (item.quality < 50) {
-            item.quality = item.quality + 1;
-        }
-    }
-
     private void standardItems(Item item) {
         StandardItems standardItems = new StandardItems();
         standardItems.updateProductQuality(item);
