@@ -4,6 +4,13 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+/**
+ * Each test scenario of this inventory project has been covered by Unit test.
+ *
+ * @project Java Kata
+ * @author Muralitharan R K
+ *
+ */
 class GildedRoseTest {
 
     @Test
@@ -154,6 +161,34 @@ class GildedRoseTest {
         String itemName = "Backstage passes to a TAFKAL80ETC concert";
         int itemSellIn = 0;
         int itemQuality = 13;
+
+        Item item = new Item(itemName, itemSellIn, itemQuality);
+        GildedRose gildedRose = new GildedRose(new Item[]{item});
+
+        gildedRose.updateQuality();
+
+        assertEquals(0, item.quality);
+    }
+
+    @Test
+    public void conjured_item_quality_value_should_be_decreased_by_2(){
+        String itemName = "Conjured";
+        int itemSellIn = 1;
+        int itemQuality = 13;
+
+        Item item = new Item(itemName, itemSellIn, itemQuality);
+        GildedRose gildedRose = new GildedRose(new Item[]{item});
+
+        gildedRose.updateQuality();
+
+        assertEquals(11, item.quality);
+    }
+
+    @Test
+    public void conjured_item_quality_value_should_not_be_in_negative() {
+        String itemName = "Conjured";
+        int itemSellIn = 2;
+        int itemQuality = 1;
 
         Item item = new Item(itemName, itemSellIn, itemQuality);
         GildedRose gildedRose = new GildedRose(new Item[]{item});
