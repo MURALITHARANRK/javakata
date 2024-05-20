@@ -10,26 +10,22 @@ import com.gildedrose.service.impl.*;
  * <p>This ProductRegistry class has an entry point of the Product. Where product has been initialized to Product Service based of the product name</p>
  */
 public class ProductRegistry {
-    private static final String AGED_BRIE = "Aged Brie";
-    private static final String BACKSTAGE_PASSES = "Backstage passes to a TAFKAL80ETC concert";
-    private static final String SULFURAS = "Sulfuras, Hand of Ragnaros";
-    private static final String CONJURED = "Conjured";
 
-    public static void updateProductQuality(Item item){
+    public static void updateProductQuality(Item item) {
 
         ProductService productService;
 
         switch (item.name) {
-            case AGED_BRIE:
+            case ProductList.AGED_BRIE:
                 productService = new AgedBrie();
                 break;
-            case BACKSTAGE_PASSES:
+            case ProductList.BACKSTAGE_PASSES:
                 productService = new BackstagePasses();
                 break;
-            case CONJURED:
+            case ProductList.CONJURED:
                 productService = new Conjured();
                 break;
-            case SULFURAS:
+            case ProductList.SULFURAS:
                 productService = new Sulfuras();
                 break;
             default:
