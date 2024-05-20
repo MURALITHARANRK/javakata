@@ -33,10 +33,11 @@ public interface ProductService {
      * The Quality of the product should not be more than <b>50</b> as well as should not be in negative.
      */
     default void updateQuality(Item item, int itemQuality) {
+        int qualityValue = item.quality + itemQuality;
         if (itemQuality > 0) {
-            item.quality = (Math.max(item.quality, (item.quality + itemQuality)) > MAX_QUALITY) ? MAX_QUALITY : (item.quality + itemQuality);
+            item.quality = (Math.max(item.quality, qualityValue) > MAX_QUALITY) ? MAX_QUALITY : ((Math.min(item.quality, qualityValue) < MIN_QUALITY) ? MIN_QUALITY : qualityValue);
         } else {
-            item.quality = (Math.min(item.quality, (item.quality + itemQuality)) < MIN_QUALITY) ? MIN_QUALITY : (item.quality + itemQuality);
+            item.quality = (Math.min(item.quality, qualityValue) < MIN_QUALITY) ? MIN_QUALITY : ((Math.max(item.quality, qualityValue) > MAX_QUALITY) ? MAX_QUALITY : qualityValue);
         }
     }
 
