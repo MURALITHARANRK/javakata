@@ -2,7 +2,6 @@ package com.gildedrose.service.impl;
 
 import com.gildedrose.Item;
 import com.gildedrose.service.ProductService;
-import com.gildedrose.service.ProductUpdate;
 
 /**
  * @author Muralitharan R K
@@ -12,14 +11,12 @@ import com.gildedrose.service.ProductUpdate;
  */
 public class Conjured implements ProductService {
 
-    private final ProductUpdate productUpdate = new ProductUpdate();
-
     /**
      * @param item
      */
     @Override
     public void updateProductQuality(Item item) {
-        productUpdate.updateQuality(item, -2);
+        updateQuality(item, -2);
     }
 
     /**
@@ -27,6 +24,6 @@ public class Conjured implements ProductService {
      */
     @Override
     public void updateProductSellIn(Item item) {
-        productUpdate.updateSellIn(item);
+        updateSellIn(item);
     }
 }
