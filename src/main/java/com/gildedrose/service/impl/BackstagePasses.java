@@ -2,7 +2,6 @@ package com.gildedrose.service.impl;
 
 import com.gildedrose.Item;
 import com.gildedrose.service.ProductService;
-import com.gildedrose.service.ProductUpdate;
 
 /**
  * @author Muralitharan R K
@@ -11,8 +10,6 @@ import com.gildedrose.service.ProductUpdate;
  * <p>This BackstagePasses product class implemented the two abstract methods of the Product Service</p>
  */
 public class BackstagePasses implements ProductService {
-
-    private final ProductUpdate productUpdate = new ProductUpdate();
 
     /**
      * @param item
@@ -27,10 +24,10 @@ public class BackstagePasses implements ProductService {
         } else if (item.sellIn > 0) {
             qualityValue = 3;
         } else {
-            productUpdate.resetQuality(item);
+            resetQuality(item);
         }
 
-        productUpdate.updateQuality(item, qualityValue);
+        updateQuality(item, qualityValue);
     }
 
     /**
@@ -38,6 +35,6 @@ public class BackstagePasses implements ProductService {
      */
     @Override
     public void updateProductSellIn(Item item) {
-        productUpdate.updateSellIn(item);
+        updateSellIn(item);
     }
 }
