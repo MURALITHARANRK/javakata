@@ -6,8 +6,8 @@ import com.gildedrose.service.ProductService;
 /**
  * @author Muralitharan R K
  * @project javakata
- *<p></p>
- *<p>This AgedBrie product class implemented the two abstract methods of the Product Service</p>
+ * <p></p>
+ * <p>This AgedBrie product class implemented the two abstract methods of the Product Service</p>
  */
 public class AgedBrie implements ProductService {
 
@@ -16,12 +16,7 @@ public class AgedBrie implements ProductService {
      */
     @Override
     public void updateProductQuality(Item item) {
-        int qualityValue;
-        if(isValidSellIn(item)){
-            qualityValue = 2;
-        }else{
-            qualityValue = 1;
-        }
+        int qualityValue = isValidSellIn(item) ? 2 : 1;
         updateQuality(item, qualityValue);
     }
 

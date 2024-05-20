@@ -16,11 +16,8 @@ public class Conjured implements ProductService {
      */
     @Override
     public void updateProductQuality(Item item) {
-        if (isValidSellIn(item)) {
-            updateQuality(item, -4);
-        }else{
-            updateQuality(item, -2);
-        }
+        int qualityValue = isValidSellIn(item) ? -4 : -2;
+        updateQuality(item, qualityValue);
     }
 
     /**

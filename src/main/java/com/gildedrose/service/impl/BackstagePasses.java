@@ -16,17 +16,7 @@ public class BackstagePasses implements ProductService {
      */
     @Override
     public void updateProductQuality(Item item) {
-        int qualityValue = 0;
-        if (item.sellIn > 10) {
-            qualityValue = 1;
-        } else if (item.sellIn > 5) {
-            qualityValue = 2;
-        } else if (item.sellIn > 0) {
-            qualityValue = 3;
-        } else {
-            resetQuality(item);
-        }
-
+        int qualityValue = (item.sellIn > 10) ? 1 : (item.sellIn > 5) ? 2 : (item.sellIn > 0) ? 3 : resetQuality(item);
         updateQuality(item, qualityValue);
     }
 

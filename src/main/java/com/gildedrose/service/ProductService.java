@@ -51,8 +51,8 @@ public interface ProductService {
     /**
      * Reset the product quality value
      */
-    default void resetQuality(Item item) {
-        item.quality = 0;
+    default int resetQuality(Item item) {
+        return item.quality = 0;
     }
 
 }

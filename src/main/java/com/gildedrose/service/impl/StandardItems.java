@@ -16,12 +16,7 @@ public class StandardItems implements ProductService {
      */
     @Override
     public void updateProductQuality(Item item) {
-        int qualityValue;
-        if(isValidSellIn(item)){
-            qualityValue = -2;
-        }else{
-            qualityValue = -1;
-        }
+        int qualityValue = isValidSellIn(item) ? -2 : -1;
         updateQuality(item, qualityValue);
     }
 
