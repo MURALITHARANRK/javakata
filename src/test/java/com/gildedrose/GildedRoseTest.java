@@ -51,6 +51,18 @@ class GildedRoseTest {
     }
 
     @ParameterizedTest
+    @CsvSource({"'New Product', 10, 11, 10", "'New Product', 9, 10, 9", "'New Product', 8, 9, 8"})
+    public void sellIn_and_quality_value_should_be_decreased_for_multiple_items(String itemName, int itemSellIn, int itemQuality, int expectedResult) {
+
+        Item item = new Item(itemName, itemSellIn, itemQuality);
+        GildedRose gildedRose = new GildedRose(new Item[]{item});
+
+        gildedRose.updateQuality();
+
+        assertEquals(expectedResult, item.quality);
+    }
+
+    @ParameterizedTest
     @CsvSource({"'Aged Brie', 10, 5, 6"})
     public void increase_the_quality_of_aged_brie_when_it_gets_older(String itemName, int itemSellIn, int itemQuality, int expectedResult) {
 
@@ -75,6 +87,18 @@ class GildedRoseTest {
     }
 
     @ParameterizedTest
+    @CsvSource({"'Aged Brie', 6, 7, 8", "'Aged Brie', 5, 49, 50", "'Aged Brie', 10, 50, 50", "'Aged Brie', 0, 10, 12"})
+    public void aged_brie_update_quality_for_multiple_items(String itemName, int itemSellIn, int itemQuality, int expectedResult) {
+
+        Item item = new Item(itemName, itemSellIn, itemQuality);
+        GildedRose gildedRose = new GildedRose(new Item[]{item});
+
+        gildedRose.updateQuality();
+
+        assertEquals(expectedResult, item.quality);
+    }
+
+    @ParameterizedTest
     @CsvSource({"'Sulfuras, Hand of Ragnaros', 15, 5, 15, 5"})
     public void sellIn_and_quality_values_should_not_be_decreased_for_sulfuras(String itemName, int itemSellIn, int itemQuality, int expectedSellInValue, int expectedQualityValue) {
 
@@ -85,6 +109,18 @@ class GildedRoseTest {
 
         assertEquals(expectedSellInValue, item.sellIn);
         assertEquals(expectedQualityValue, item.quality);
+    }
+
+    @ParameterizedTest
+    @CsvSource({"'Sulfuras, Hand of Ragnaros', 15, 80, 80"})
+    public void quality_value_of_the_legendary_item_sulfuras_should_not_be_80(String itemName, int itemSellIn, int itemQuality, int expectedResult) {
+
+        Item item = new Item(itemName, itemSellIn, itemQuality);
+        GildedRose gildedRose = new GildedRose(new Item[]{item});
+
+        gildedRose.updateQuality();
+
+        assertEquals(expectedResult, item.quality);
     }
 
     @ParameterizedTest
@@ -148,6 +184,18 @@ class GildedRoseTest {
     }
 
     @ParameterizedTest
+    @CsvSource({"'Backstage passes to a TAFKAL80ETC concert', 0, 13, 0", "'Backstage passes to a TAFKAL80ETC concert', 4, 13, 16", "'Backstage passes to a TAFKAL80ETC concert', 6, 46, 48", "'Backstage passes to a TAFKAL80ETC concert', 10, 49, 50", "'Backstage passes to a TAFKAL80ETC concert',11, 30, 31"})
+    public void backstage_passes_update_quality_for_multitple_items(String itemName, int itemSellIn, int itemQuality, int expectedResult) {
+
+        Item item = new Item(itemName, itemSellIn, itemQuality);
+        GildedRose gildedRose = new GildedRose(new Item[]{item});
+
+        gildedRose.updateQuality();
+
+        assertEquals(expectedResult, item.quality);
+    }
+
+    @ParameterizedTest
     @CsvSource({"'Conjured', 1, 13, 11"})
     public void conjured_item_quality_value_should_be_decreased_by_2(String itemName, int itemSellIn, int itemQuality, int expectedResult) {
         Item item = new Item(itemName, itemSellIn, itemQuality);
@@ -168,5 +216,28 @@ class GildedRoseTest {
 
         assertEquals(expectedResult, item.quality);
     }
+
+    @ParameterizedTest
+    @CsvSource({"'Conjured', 0, 10, 6"})
+    public void conjured_item_quality_value_should_be_decreased_by_4_if_product_expired(String itemName, int itemSellIn, int itemQuality, int expectedResult) {
+        Item item = new Item(itemName, itemSellIn, itemQuality);
+        GildedRose gildedRose = new GildedRose(new Item[]{item});
+
+        gildedRose.updateQuality();
+
+        assertEquals(expectedResult, item.quality);
+    }
+
+    @ParameterizedTest
+    @CsvSource({"'Conjured', 10, 20, 18", "'Conjured', 0, 10, 6", "'Conjured', 10, 1, 0"})
+    public void conjured_item_quality_update_multiple_items(String itemName, int itemSellIn, int itemQuality, int expectedResult) {
+        Item item = new Item(itemName, itemSellIn, itemQuality);
+        GildedRose gildedRose = new GildedRose(new Item[]{item});
+
+        gildedRose.updateQuality();
+
+        assertEquals(expectedResult, item.quality);
+    }
+
 
 }
