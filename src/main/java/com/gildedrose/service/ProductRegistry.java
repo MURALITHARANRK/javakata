@@ -11,25 +11,25 @@ import com.gildedrose.service.impl.*;
  */
 public class ProductRegistry {
 
-    public static void updateProductQuality(Item item) {
+    public static void updateProduct(Item item) {
 
         ProductService productService;
 
         switch (item.name) {
             case ProductList.AGED_BRIE:
-                productService = new AgedBrie();
+                productService = new ProductAgedBrie();
                 break;
             case ProductList.BACKSTAGE_PASSES:
-                productService = new BackstagePasses();
+                productService = new ProductBackstagePasses();
                 break;
             case ProductList.CONJURED:
-                productService = new Conjured();
+                productService = new ProductConjured();
                 break;
             case ProductList.SULFURAS:
-                productService = new Sulfuras();
+                productService = new ProductSulfuras();
                 break;
             default:
-                productService = new StandardItems();
+                productService = new ProductStandardItems();
                 break;
         }
 

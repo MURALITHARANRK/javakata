@@ -7,16 +7,16 @@ import com.gildedrose.service.ProductService;
  * @author Muralitharan R K
  * @project javakata
  * <p></p>
- * <p>This BackstagePasses product class implemented the two abstract methods of the Product Service</p>
+ * <p>This ProductConjured product class implemented the two abstract methods of the Product Service</p>
  */
-public class BackstagePasses implements ProductService {
+public class ProductConjured implements ProductService {
 
     /**
      * @param item
      */
     @Override
     public void updateProductQuality(Item item) {
-        int qualityValue = (item.sellIn > 10) ? 1 : (item.sellIn > 5) ? 2 : (item.sellIn > 0) ? 3 : resetQuality(item);
+        int qualityValue = isValidSellIn(item) ? -4 : -2;
         updateQuality(item, qualityValue);
     }
 

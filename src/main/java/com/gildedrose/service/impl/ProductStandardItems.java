@@ -7,9 +7,9 @@ import com.gildedrose.service.ProductService;
  * @author Muralitharan R K
  * @project javakata
  * <p></p>
- * <p>This StandardItems product class implemented the two abstract methods of the Product Service</p>
+ * <p>This ProductStandardItems product class implemented the two abstract methods of the Product Service</p>
  */
-public class StandardItems implements ProductService {
+public class ProductStandardItems implements ProductService {
 
     /**
      * @param item

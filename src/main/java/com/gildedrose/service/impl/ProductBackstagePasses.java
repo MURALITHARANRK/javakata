@@ -7,15 +7,17 @@ import com.gildedrose.service.ProductService;
  * @author Muralitharan R K
  * @project javakata
  * <p></p>
- * <p>This Sulfuras product class implemented the two abstract methods of the Product Service, Even though, implementation has not been done as per the requirements </p>
+ * <p>This ProductBackstagePasses product class implemented the two abstract methods of the Product Service</p>
  */
-public class Sulfuras implements ProductService {
+public class ProductBackstagePasses implements ProductService {
+
     /**
      * @param item
      */
     @Override
     public void updateProductQuality(Item item) {
-
+        int qualityValue = (item.sellIn > 10) ? 1 : (item.sellIn > 5) ? 2 : (item.sellIn > 0) ? 3 : resetQuality(item);
+        updateQuality(item, qualityValue);
     }
 
     /**
@@ -23,6 +25,6 @@ public class Sulfuras implements ProductService {
      */
     @Override
     public void updateProductSellIn(Item item) {
-
+        updateSellIn(item);
     }
 }
