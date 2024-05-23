@@ -33,12 +33,30 @@ public interface ProductService {
      * The Quality of the product should not be more than <b>50</b> as well as should not be in negative.
      */
     default void updateQuality(Item item, int itemQuality) {
-        int qualityValue = item.quality + itemQuality;
-        if (itemQuality > 0) {
-            item.quality = (Math.max(item.quality, qualityValue) > MAX_QUALITY) ? MAX_QUALITY : ((Math.min(item.quality, qualityValue) < MIN_QUALITY) ? MIN_QUALITY : qualityValue);
+        if (itemQuality == 0) {
+            item.quality = 0;
         } else {
-            item.quality = (Math.min(item.quality, qualityValue) < MIN_QUALITY) ? MIN_QUALITY : ((Math.max(item.quality, qualityValue) > MAX_QUALITY) ? MAX_QUALITY : qualityValue);
+            int qualityValue = item.quality + itemQuality;
+            if (itemQuality > 0) {
+                item.quality = getMaxQualityValue(item, qualityValue);
+            } else {
+                item.quality = getMinQualityValue(item, qualityValue);
+            }
         }
+    }
+
+    /**
+     * This function will return the minimum value of the item quality. Which should not be in negative.
+     */
+    default int getMinQualityValue(Item item, int qualityValue) {
+        return Math.min(item.quality, qualityValue) < MIN_QUALITY ? MIN_QUALITY : (Math.max(item.quality, qualityValue) > MAX_QUALITY ? MAX_QUALITY : qualityValue);
+    }
+
+    /**
+     * This function will return the maximum value of the item quality. Which should not be more than 50.
+     */
+    default int getMaxQualityValue(Item item, int qualityValue) {
+        return Math.max(item.quality, qualityValue) > MAX_QUALITY ? MAX_QUALITY : (Math.min(item.quality, qualityValue) < MIN_QUALITY ? MIN_QUALITY : qualityValue);
     }
 
     /**
@@ -46,13 +64,6 @@ public interface ProductService {
      */
     default void updateSellIn(Item item) {
         item.sellIn--;
-    }
-
-    /**
-     * Reset the product quality value
-     */
-    default int resetQuality(Item item) {
-        return item.quality = 0;
     }
 
 }
