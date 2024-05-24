@@ -12,10 +12,12 @@ import com.gildedrose.service.ProductService;
 public class ProductSulfuras implements ProductService {
     /**
      * @param item
+     * @return
      */
     @Override
-    public void updateProductQuality(Item item) {
-
+    public ProductSulfuras updateProductQuality(Item item) {
+        // For Sulfuras product no need to update quality
+        return this;
     }
 
     /**
@@ -23,6 +25,6 @@ public class ProductSulfuras implements ProductService {
      */
     @Override
     public void updateProductSellIn(Item item) {
-
+        // For Sulfuras product no need to update sellIn
     }
 }

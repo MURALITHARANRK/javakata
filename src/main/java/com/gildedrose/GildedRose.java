@@ -12,6 +12,6 @@ class GildedRose {
     }
 
     public void updateQuality() {
-        Arrays.stream(items).forEach(ProductRegistry::updateProduct);
+        Arrays.stream(items).forEach(item -> new ProductRegistry().updateProduct(item));
     }
 }

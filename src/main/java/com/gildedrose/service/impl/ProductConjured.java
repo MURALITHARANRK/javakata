@@ -13,11 +13,13 @@ public class ProductConjured implements ProductService {
 
     /**
      * @param item
+     * @return
      */
     @Override
-    public void updateProductQuality(Item item) {
+    public ProductConjured updateProductQuality(Item item) {
         int qualityValue = isValidSellIn(item) ? -4 : -2;
         updateQuality(item, qualityValue);
+        return this;
     }
 
     /**

@@ -3,6 +3,9 @@ package com.gildedrose.service;
 import com.gildedrose.Item;
 import com.gildedrose.service.impl.*;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * @author Muralitharan R K
  * @project javakata
@@ -11,29 +14,21 @@ import com.gildedrose.service.impl.*;
  */
 public class ProductRegistry {
 
-    public static void updateProduct(Item item) {
+    private static final Map<String, ProductService> productServiceMap = new HashMap<>();
 
-        ProductService productService;
+    public ProductRegistry() {
+        productServiceMap.putIfAbsent(ProductList.AGED_BRIE, new ProductAgedBrie());
+        productServiceMap.putIfAbsent(ProductList.BACKSTAGE_PASSES, new ProductBackstagePasses());
+        productServiceMap.putIfAbsent(ProductList.CONJURED, new ProductConjured());
+        productServiceMap.putIfAbsent(ProductList.SULFURAS, new ProductSulfuras());
+        productServiceMap.putIfAbsent(null, new ProductStandardItems());
+    }
 
-        switch (item.name) {
-            case ProductList.AGED_BRIE:
-                productService = new ProductAgedBrie();
-                break;
-            case ProductList.BACKSTAGE_PASSES:
-                productService = new ProductBackstagePasses();
-                break;
-            case ProductList.CONJURED:
-                productService = new ProductConjured();
-                break;
-            case ProductList.SULFURAS:
-                productService = new ProductSulfuras();
-                break;
-            default:
-                productService = new ProductStandardItems();
-                break;
-        }
+    public void updateProduct(Item item) {
+        getProductService(item).updateProductQuality(item).updateProductSellIn(item);
+    }
 
-        productService.updateProductQuality(item);
-        productService.updateProductSellIn(item);
+    private ProductService getProductService(Item item) {
+        return productServiceMap.containsKey(item.name) ? productServiceMap.get(item.name) : productServiceMap.get(null);
     }
 }

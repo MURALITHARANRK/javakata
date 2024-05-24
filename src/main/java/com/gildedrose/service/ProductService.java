@@ -18,7 +18,7 @@ public interface ProductService {
     int MAX_QUALITY = 50;
     int MIN_QUALITY = 0;
 
-    void updateProductQuality(Item item);
+    ProductService updateProductQuality(Item item);
 
     void updateProductSellIn(Item item);
 

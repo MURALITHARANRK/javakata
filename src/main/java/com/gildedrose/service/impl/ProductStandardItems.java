@@ -13,11 +13,13 @@ public class ProductStandardItems implements ProductService {
 
     /**
      * @param item
+     * @return
      */
     @Override
-    public void updateProductQuality(Item item) {
+    public ProductStandardItems updateProductQuality(Item item) {
         int qualityValue = isValidSellIn(item) ? -2 : -1;
         updateQuality(item, qualityValue);
+        return this;
     }
 
     /**
