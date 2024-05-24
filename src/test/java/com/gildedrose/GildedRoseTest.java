@@ -196,7 +196,7 @@ class GildedRoseTest {
     }
 
     @ParameterizedTest
-    @CsvSource({"'Conjured', 1, 13, 11"})
+    @CsvSource({"'Conjured Mana Cake', 1, 13, 11"})
     public void conjured_item_quality_value_should_be_decreased_by_2(String itemName, int itemSellIn, int itemQuality, int expectedResult) {
         Item item = new Item(itemName, itemSellIn, itemQuality);
         GildedRose gildedRose = new GildedRose(new Item[]{item});
@@ -207,7 +207,7 @@ class GildedRoseTest {
     }
 
     @ParameterizedTest
-    @CsvSource({"'Conjured', 2, 1, 0"})
+    @CsvSource({"'Conjured Mana Cake', 2, 1, 0"})
     public void conjured_item_quality_value_should_not_be_in_negative(String itemName, int itemSellIn, int itemQuality, int expectedResult) {
         Item item = new Item(itemName, itemSellIn, itemQuality);
         GildedRose gildedRose = new GildedRose(new Item[]{item});
@@ -218,7 +218,7 @@ class GildedRoseTest {
     }
 
     @ParameterizedTest
-    @CsvSource({"'Conjured', 0, 10, 6"})
+    @CsvSource({"'Conjured Mana Cake', 0, 10, 6"})
     public void conjured_item_quality_value_should_be_decreased_by_4_if_product_expired(String itemName, int itemSellIn, int itemQuality, int expectedResult) {
         Item item = new Item(itemName, itemSellIn, itemQuality);
         GildedRose gildedRose = new GildedRose(new Item[]{item});
@@ -229,7 +229,7 @@ class GildedRoseTest {
     }
 
     @ParameterizedTest
-    @CsvSource({"'Conjured', 10, 20, 18", "'Conjured', 0, 10, 6", "'Conjured', 10, 1, 0"})
+    @CsvSource({"'Conjured Mana Cake', 10, 20, 18", "'Conjured Mana Cake', 0, 10, 6", "'Conjured Mana Cake', 10, 1, 0"})
     public void conjured_item_quality_update_multiple_items(String itemName, int itemSellIn, int itemQuality, int expectedResult) {
         Item item = new Item(itemName, itemSellIn, itemQuality);
         GildedRose gildedRose = new GildedRose(new Item[]{item});
