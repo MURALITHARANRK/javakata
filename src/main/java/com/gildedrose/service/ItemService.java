@@ -6,31 +6,31 @@ import com.gildedrose.Item;
  * @author Muralitharan R K
  * @project javakata
  * <p></p>
- * <p>This product service interface will be having two abstract methods which should have been implemented whenever new product tried to implement this interface.</p>
+ * <p>This ItemService interface will be having two abstract methods which should have been implemented whenever new item tried to implement this interface.</p>
  * <ul>
- * <li>updateProductQuality method</li>
- * <li>updateProductSellIn method</li>
+ * <li>updateItemQuality method</li>
+ * <li>updateItemSellIn method</li>
  * </ul>
- * <p>Some common functionalities of the Product Service methods added under default method</p>
+ * <p>Some common functionalities of the Item Service methods added under default method</p>
  */
-public interface ProductService {
+public interface ItemService {
 
     int MAX_QUALITY = 50;
     int MIN_QUALITY = 0;
 
-    ProductService updateProductQuality(Item item);
+    ItemService updateItemQuality(Item item);
 
-    void updateProductSellIn(Item item);
+    void updateItemSellIn(Item item);
 
     /**
-     * Validating the product whether it is valid to sell or not.
+     * Validating the item whether it is valid to sell or not.
      */
     default boolean isValidSellIn(Item item) {
         return item.sellIn <= 0;
     }
 
     /**
-     * The Quality of the product should not be more than <b>50</b> as well as should not be in negative.
+     * The Quality of an item should not be more than <b>50</b> as well as should not be in negative.
      */
     default void updateQuality(Item item, int itemQuality) {
         if (itemQuality == 0) {
@@ -60,7 +60,7 @@ public interface ProductService {
     }
 
     /**
-     * Reduce the product sellIn value
+     * Decrease the item sellIn value
      */
     default void updateSellIn(Item item) {
         item.sellIn--;

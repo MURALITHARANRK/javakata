@@ -1,6 +1,6 @@
 package com.gildedrose;
 
-import com.gildedrose.service.ProductRegistry;
+import com.gildedrose.service.ItemRegistry;
 
 import java.util.Arrays;
 
@@ -12,6 +12,6 @@ class GildedRose {
     }
 
     public void updateQuality() {
-        Arrays.stream(items).forEach(item -> new ProductRegistry().updateProduct(item));
+        Arrays.stream(items).forEach(item -> new ItemRegistry().updateItem(item));
     }
 }

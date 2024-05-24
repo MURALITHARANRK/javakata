@@ -14,7 +14,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 class GildedRoseTest {
 
     @ParameterizedTest
-    @CsvSource({"'New Product', 4, 9, 3, 8"})
+    @CsvSource({"'New Item', 4, 9, 3, 8"})
     public void sellIn_and_quality_should_be_decreased_each_day(String itemName, int itemSellIn, int itemQuality, int expectedSellInValue, int expectedQualityValue) {
 
         Item item = new Item(itemName, itemSellIn, itemQuality);
@@ -27,7 +27,7 @@ class GildedRoseTest {
     }
 
     @ParameterizedTest
-    @CsvSource({"'New Product', 0, 10, 8"})
+    @CsvSource({"'New Item', 0, 10, 8"})
     public void when_sellIn_value_less_than_or_equal_to_zero_then_quality_should_be_decreased_twice(String itemName, int itemSellIn, int itemQuality, int expectedResult) {
 
         Item item = new Item(itemName, itemSellIn, itemQuality);
@@ -39,7 +39,7 @@ class GildedRoseTest {
     }
 
     @ParameterizedTest
-    @CsvSource({"'New Product', 15, 0, 0"})
+    @CsvSource({"'New Item', 15, 0, 0"})
     public void quality_of_an_item_is_never_negative(String itemName, int itemSellIn, int itemQuality, int expectedResult) {
 
         Item item = new Item(itemName, itemSellIn, itemQuality);
@@ -51,7 +51,7 @@ class GildedRoseTest {
     }
 
     @ParameterizedTest
-    @CsvSource({"'New Product', 10, 11, 10", "'New Product', 9, 10, 9", "'New Product', 8, 9, 8"})
+    @CsvSource({"'New Item', 10, 11, 10", "'New Item', 9, 10, 9", "'New Item', 8, 9, 8"})
     public void sellIn_and_quality_value_should_be_decreased_for_multiple_items(String itemName, int itemSellIn, int itemQuality, int expectedResult) {
 
         Item item = new Item(itemName, itemSellIn, itemQuality);
@@ -219,7 +219,7 @@ class GildedRoseTest {
 
     @ParameterizedTest
     @CsvSource({"'Conjured Mana Cake', 0, 10, 6"})
-    public void conjured_item_quality_value_should_be_decreased_by_4_if_product_expired(String itemName, int itemSellIn, int itemQuality, int expectedResult) {
+    public void conjured_item_quality_value_should_be_decreased_by_4_if_item_expired(String itemName, int itemSellIn, int itemQuality, int expectedResult) {
         Item item = new Item(itemName, itemSellIn, itemQuality);
         GildedRose gildedRose = new GildedRose(new Item[]{item});
 

@@ -1,22 +1,22 @@
 package com.gildedrose.service.impl;
 
 import com.gildedrose.Item;
-import com.gildedrose.service.ProductService;
+import com.gildedrose.service.ItemService;
 
 /**
  * @author Muralitharan R K
  * @project javakata
  * <p></p>
- * <p>This ProductBackstagePasses product class implemented the two abstract methods of the Product Service</p>
+ * <p>This ItemBackstagePassesImpl class implemented the two abstract methods of the ItemService</p>
  */
-public class ProductBackstagePasses implements ProductService {
+public class ItemBackstagePassesImpl implements ItemService {
 
     /**
      * @param item
      * @return
      */
     @Override
-    public ProductBackstagePasses updateProductQuality(Item item) {
+    public ItemBackstagePassesImpl updateItemQuality(Item item) {
         int qualityValue = (item.sellIn > 10) ? 1 : (item.sellIn > 5) ? 2 : (item.sellIn > 0) ? 3 : 0;
         updateQuality(item, qualityValue);
         return this;
@@ -26,7 +26,7 @@ public class ProductBackstagePasses implements ProductService {
      * @param item
      */
     @Override
-    public void updateProductSellIn(Item item) {
+    public void updateItemSellIn(Item item) {
         updateSellIn(item);
     }
 }

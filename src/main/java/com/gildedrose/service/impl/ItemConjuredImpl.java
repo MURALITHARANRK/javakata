@@ -1,22 +1,22 @@
 package com.gildedrose.service.impl;
 
 import com.gildedrose.Item;
-import com.gildedrose.service.ProductService;
+import com.gildedrose.service.ItemService;
 
 /**
  * @author Muralitharan R K
  * @project javakata
  * <p></p>
- * <p>This ProductConjured product class implemented the two abstract methods of the Product Service</p>
+ * <p>This ItemConjuredImpl class implemented the two abstract methods of the ItemService</p>
  */
-public class ProductConjured implements ProductService {
+public class ItemConjuredImpl implements ItemService {
 
     /**
      * @param item
      * @return
      */
     @Override
-    public ProductConjured updateProductQuality(Item item) {
+    public ItemConjuredImpl updateItemQuality(Item item) {
         int qualityValue = isValidSellIn(item) ? -4 : -2;
         updateQuality(item, qualityValue);
         return this;
@@ -26,7 +26,7 @@ public class ProductConjured implements ProductService {
      * @param item
      */
     @Override
-    public void updateProductSellIn(Item item) {
+    public void updateItemSellIn(Item item) {
         updateSellIn(item);
     }
 }
